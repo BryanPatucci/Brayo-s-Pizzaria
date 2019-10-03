@@ -9,6 +9,13 @@
   <script src="https://kit.fontawesome.com/be184030a6.js"></script>
   <script src="components/sistema.js"></script>
 
+  <script>
+    $(document).ready(function(){
+       carregaLista();
+    });
+  </script>
+
+
   <link rel="stylesheet" href="components/loader.css">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/estilo.css">
@@ -39,7 +46,7 @@
     <div class="row">
       <div class="col-xs-12">
         <label for=""><i class="fas fa-scroll fa-1x" style="margin-right: 5px"></i>Lista de Pizzas:</label>
-        <select name=""  id="" class="form-control" style="background-color: transparent; border-top: 10px; border-left: 30px; border-right: 30px ; outline: none;">  
+        <select name=""  id="lista" class="form-control" style="background-color: border-top: 10px; border-left: 30px; border-right: 30px ; outline: none;">  
 
         </select>
       </div>
@@ -68,7 +75,7 @@
     </div>
     <div class="row">
       <div class="col-xs-6">
-        <button class="btn btn-lg btn-block  btn-success"><i class="fas fa-check-circle fa-1x casa" style="margin-right: 5px"></i>Salvar</button>
+        <button class="btn btn-lg btn-block  btn-success"><i class="fas fa-check-circle fa-1x casa" style="margin-right: 5px" id="salvar"></i>Salvar</button>
       </div>
       <div class="col-xs-6">
         <button class="btn btn-lg btn-block  btn-warning"><i class="fas fa-edit fa-1x" style="margin-right: 5px"></i>Editar</button>
