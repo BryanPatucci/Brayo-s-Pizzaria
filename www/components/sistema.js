@@ -1,10 +1,13 @@
+//Voltar para pagina anterior
 $(document).on("click","#listar", function(){
 $(location).attr
 ("href","listar.html");
 });
-$(document).on("click","#salvar",function(){
+
+//cadastrar pizza
+$(document).on("click","#cadastrar",function(){
 var parametros = {
-  "sabor":$("sabor").val(),
+  "sabor":$("#sabor").val(),
   "valor":$("#valor").val()
 };
 $.ajax({
@@ -16,12 +19,14 @@ success: function(data){
   $("sabor").val("");
   $("valor").val("")
 },
+
 error: function(data){
   navigator.notification.alert("Erro ao cadastrar!");
-}
-});
+    }
+  });
 });
 
+//listar pizzas
 function carregaLista(){
         $.ajax({
       type:"post",
@@ -39,3 +44,48 @@ function carregaLista(){
       }
       });
 }
+
+//listar sabor, valor e codigo das pizzas
+$(document).on("change","#lista",function(){
+    var parametro ={
+      "codigo":$("option:selected",("#lista")).val()
+    };
+
+    $.ajax({
+      type: "post",
+      url:"https://brayospizzaria.000webhostapp.com/listar%20um.php",
+      data:parametro,
+      dataType:"json",
+
+      success: function(data){
+        $("#codigo").val(data.pizza.codigo);
+        $("#sabor").val(data.pizza.sabor);
+        $("#valor").val(data.pizza.valor)
+      },
+
+      error: function(data){
+        navigator.notification.alert("Erro ao buscar registros!");
+      }
+  });
+});
+
+//Editar
+$(document).on("click","#editar",function(){
+  $("#sabor").prop("readonly", false);
+  $("#valor").prop("readonly", false);
+});
+
+$(document).on("click", "#cancelar", function(){
+  $("#sabor").val("");
+  $("#valor").val("");
+  $("#sabor").prop("readonly", true);
+  $("#valor").prop("readonly", true);
+});
+
+$(document).on("click", "#salvar", function(){
+
+});
+
+$(document).on("click", "#deletar", function(){
+  
+});
