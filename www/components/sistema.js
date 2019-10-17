@@ -74,14 +74,14 @@ $(document).on("click","#editar",function(){
   $("#sabor").prop("readonly", false);
   $("#valor").prop("readonly", false);
 });
-
+//Cancelar
 $(document).on("click", "#cancelar", function(){
   $("#sabor").val("");
   $("#valor").val("");
   $("#sabor").prop("readonly", true);
   $("#valor").prop("readonly", true);
 });
-
+//Salvar
 $(document).on("click", "#salvar", function(){
   var parametros ={
     "codigo":$("#codigo").val(),
@@ -105,7 +105,23 @@ $(document).on("click", "#salvar", function(){
     }
   });
 });
-
+//Deletar
 $(document).on("click", "#deletar", function(){
-  
+  var parametro ={
+    "codigo":$("#codigo").val()
+  };
+
+  $.ajax({
+    type:"post",
+    url:"https://brayospizzaria.000webhostapp.com/deletar.php",
+    data:parametro,
+
+    success: function(data){
+      navigator.notification.alert(data);
+      location.reload();
+    },
+    error: function(data){
+      navigator.notification.alert("Erro ao deletar!");
+    }
+  });
 });
