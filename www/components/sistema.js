@@ -40,7 +40,7 @@ function carregaLista(){
         $("#lista").html(itemlista);
       },
       error: function(data){
-        navigator.notification.alert("Erro ao buscar resgistro!");
+        navigator.notification.alert("Erro ao listar resgistros!");
       }
       });
 }
@@ -64,7 +64,7 @@ $(document).on("change","#lista",function(){
       },
 
       error: function(data){
-        navigator.notification.alert("Erro ao buscar registros!");
+        navigator.notification.alert("Erro ao listar atributos!");
       }
   });
 });
@@ -101,7 +101,7 @@ $(document).on("click", "#salvar", function(){
       location.reload();
     },
     error: function(data){
-      navigator.notification.alert("Erro ao cadastrar")
+      navigator.notification.alert("Erro ao salvar!")
     }
   });
 });
