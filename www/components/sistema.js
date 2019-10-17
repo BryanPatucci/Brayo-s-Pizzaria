@@ -83,7 +83,27 @@ $(document).on("click", "#cancelar", function(){
 });
 
 $(document).on("click", "#salvar", function(){
+  var parametros ={
+    "codigo":$("#codigo").val(),
+    "sabor":$("#sabor").val(),
+    "valor":$("#valor").val()
+  };
 
+  $.ajax({
+    type:"post",
+    url:"https://brayospizzaria.000webhostapp.com/altera.php",
+    data:parametros,
+
+    success: function(data){
+      navigator.notification.alert(data);
+      $("#sabor").val();
+      $("#valor").val();
+      location.reload();
+    },
+    error: function(data){
+      navigator.notification.alert("Erro ao cadastrar")
+    }
+  });
 });
 
 $(document).on("click", "#deletar", function(){
